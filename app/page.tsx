@@ -173,7 +173,7 @@ const handleButtonClick = (button: "a" | "b" | "dpad") => {
         { sender: "me", text: "Gửi cu em 'vé' tham gia Lễ tốt nghiệp nghe!" },
         { sender: "me", text: "Vé với map đây nghe. :)))" }
       );
-    } else if (name === "Thy" || name === "Mai Thy") {
+    } else if (name === "thy" || name === "mai thy") {
       newMessages.push(
         { sender: "me", text: "Moàyyyyyy" },
         {
