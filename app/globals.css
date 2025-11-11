@@ -1,26 +1,291 @@
-@import "tailwindcss";
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
+/* ========== PIXEL HANDHELD FIXED STYLE ========== */
+
+.page {
+  min-height: 100vh;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background: #cfcfcf;
+  padding: 0;
+  margin: 0;
 }
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
+.handheld {
+  position: relative;
+  width: 360px;
+  height: 640px;
+  background: #e7e6cf;
+  border: 10px solid #111;
+  border-radius: 16px;
+  box-shadow: 0 6px 0 #0e0e0e, 0 12px 0 #2b2b2b;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: flex-start;
+  padding: 24px 0;
+  image-rendering: pixelated;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+/* Màn hình hiển thị */
+.screen-bezel.large {
+  width: 300px;
+  height: 350px; /* kéo dài màn hình */
+  background: #d9e3d0;
+  border: 8px solid #222;
+  border-radius: 6px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  box-shadow: inset 0 -6px 0 rgba(0, 0, 0, 0.15);
+}
+
+.screen-inner.extended {
+  width: 270px;
+  height: 320px;
+  background: #2f5a35;
+  border: 4px solid #163018;
+  overflow-y: auto;
+  padding: 8px;
+  display: flex;
+  flex-direction: column;
+  color: #e8fbe5;
+  font-family: "Courier New", monospace; /* font chữ đều, không bị vỡ pixel */
+  font-size: 13px;
+  line-height: 1.3;
+}
+
+.chat-area {
+  display: flex;
+  flex-direction: column;
+  gap: 6px;
+  flex: 1;
+}
+
+.msg {
+  max-width: 75%;
+  padding: 4px 8px;
+  border-radius: 4px;
+  border: 1px solid rgba(0, 0, 0, 0.25);
+}
+
+.msg.left {
+  align-self: flex-start;
+  background: rgba(255, 255, 255, 0.1);
+}
+
+.msg.right {
+  align-self: flex-end;
+  background: rgba(255, 255, 255, 0.3);
+}
+
+/* Input + nút gửi */
+.input-section {
+  display: flex;
+  gap: 8px;
+  background: #d5d4b5;
+  border: 3px solid #2a2a2a;
+  box-shadow: 2px 2px 0 #111;
+  padding: 4px;
+  border-radius: 4px;
+  margin-top: 10px;
+}
+
+.pixel-input {
+  width: 180px;
+  height: 26px;
+  font-size: 13px;
+  background: #f5f4e0;
+  border: 2px solid #222;
+  color: #111;
+  outline: none;
+  padding: 2px 6px;
+  font-family: "Courier New", monospace;
+}
+
+.pixel-button {
+  background: #4c7043;
+  color: #fff;
+  font-size: 13px;
+  border: 2px solid #1a1a1a;
+  padding: 2px 10px;
+  cursor: pointer;
+  box-shadow: 2px 2px 0 #111;
+  font-family: "Courier New", monospace;
+}
+
+.pixel-button:active {
+  transform: translate(1px, 1px);
+  box-shadow: 1px 1px 0 #000;
+}
+
+/* Các nút điều khiển */
+.controls.lower.move-down {
+  width: 100%;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-top: 36px;
+  padding: 0 32px;
+}
+
+.dpad {
+  width: 64px;
+  height: 64px;
+  position: relative;
+  margin-left: 8px; /* đẩy D-pad sang phải */
+}
+
+.dpad-h,
+.dpad-v {
+  position: absolute;
+  background: #222;
+  box-shadow: 3px 3px 0 #0e0e0e;
+}
+
+.dpad-h {
+  width: 64px;
+  height: 16px;
+  top: 50%;
+  transform: translateY(-50%);
+}
+
+.dpad-v {
+  width: 16px;
+  height: 64px;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+/* Nút A B */
+.ab-buttons {
+  display: flex;
+  gap: 18px;
+  align-items: center;
+  margin-right: 8px;  /* dịch sang trái */
+}
+
+.btn {
+  width: 46px;
+  height: 46px;
+  border-radius: 50%;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  color: #fff;
+  font-weight: 700;
+  font-family: Arial, sans-serif;
+  box-shadow: inset -4px -4px 0 rgba(0, 0, 0, 0.18), 6px 6px 0 #1a1a1a;
+}
+
+.btn.a {
+  background: linear-gradient(180deg, #ff4d4d, #c93a3a);
+  border: 3px solid #6b1414;
+}
+
+.btn.b {
+  background: linear-gradient(180deg, #ff6b2b, #b44b18);
+  border: 3px solid #7a2f1a;
+}
+/* --- Overlay hiển thị ảnh --- */
+.overlay {
+  position: fixed;
+  inset: 0;
+  background: rgba(10, 10, 10, 0.85);
+  backdrop-filter: blur(8px);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  z-index: 9999;
+  animation: fadeIn 0.3s ease-in-out;
+}
+
+.overlay-content {
+  position: relative;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  animation: zoomIn 0.25s ease-in-out;
+}
+
+.overlay-image {
+  border-radius: 12px;
+  box-shadow: 0 0 40px rgba(255, 255, 255, 0.25);
+  background: transparent;
+  transition: transform 0.3s ease;
+}
+
+.overlay-image:hover {
+  transform: scale(1.02);
+}
+
+.close-btn {
+  position: fixed;
+  top: 24px;
+  right: 28px;
+  background: rgba(255, 255, 255, 0.1);
+  border: 1px solid rgba(255, 255, 255, 0.3);
+  border-radius: 50%;
+  width: 36px;
+  height: 36px;
+  color: white;
+  font-size: 20px;
+  cursor: pointer;
+  z-index: 10000;
+  transition: all 0.2s ease-in-out;
+}
+
+.close-btn:hover {
+  background: rgba(255, 255, 255, 0.25);
+  transform: scale(1.1);
+}
+
+.hint {
+  color: #ccc;
+  font-size: 14px;
+  margin-top: 8px;
+  opacity: 0.7;
+}
+
+/* --- Animation --- */
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+  }
+  to {
+    opacity: 1;
   }
 }
 
-body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+@keyframes zoomIn {
+  from {
+    opacity: 0;
+    transform: scale(0.95);
+  }
+  to {
+    opacity: 1;
+    transform: scale(1);
+  }
+}
+.controls {
+  position: relative;
+  transition: transform 0.4s ease;
+  cursor: pointer;
+}
+
+.controls:hover {
+  transform: scale(1.05);
+}
+.dpad {
+  transition: transform 0.3s ease;
+  cursor: pointer;
+}
+
+.btn {
+  cursor: pointer;
+  transition: transform 0.4s ease, rotate 0.3s ease;
 }
