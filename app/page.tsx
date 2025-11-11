@@ -128,6 +128,18 @@ const handleButtonClick = (button: "a" | "b" | "dpad") => {
         },
         { sender: "me", text: "Gửi bé cái 'vé' với 'map' nhe. Cổm mơnnn :3" }
       );
+    } else if (name === "thy" || name === "mai thy") {
+      newMessages.push(
+        { sender: "me", text: "Moàyyyyyy" },
+        {
+          sender: "me",
+          text: "Tốt nghiệp kao",
+        },
+        {
+          sender: "me",
+          text: "Vé, map đây, lên đồ, vác xác tới cho kaooo!",
+        }
+      );
     } else if (name === "ngọc" || name === "bích ngọc") {
       newMessages.push(
         { sender: "me", text: "Btaskee xin chàoooo :)))" },
@@ -173,19 +185,7 @@ const handleButtonClick = (button: "a" | "b" | "dpad") => {
         { sender: "me", text: "Gửi cu em 'vé' tham gia Lễ tốt nghiệp nghe!" },
         { sender: "me", text: "Vé với map đây nghe. :)))" }
       );
-    } else if (name === "thy" || name === "mai thy") {
-      newMessages.push(
-        { sender: "me", text: "Moàyyyyyy" },
-        {
-          sender: "me",
-          text: "Tốt nghiệp kao",
-        },
-        {
-          sender: "me",
-          text: "Vé, map đây, lên đồ, vác xác tới cho kaooo!",
-        }
-      );
-    } else {
+    }  else {
       // Mặc định
       newMessages.push(
         { sender: "me", text: `Hello ${input}!` },
