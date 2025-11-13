@@ -410,7 +410,7 @@ const handleButtonClick = (button: "a" | "b" | "dpad") => {
           </button>
           <div className="overlay-content">
             <Image
-              src="/invitation.png"
+              src="/invitation.jpg"
               alt="Thiệp mời tốt nghiệp"
               width={1200}
               height={800}
