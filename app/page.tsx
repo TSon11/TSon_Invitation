@@ -15,7 +15,7 @@ export default function PixelHandheld() {
     { sender: "me", text: "Giỡn thoi 👀" },
     {
       sender: "me",
-      text: "Sắp tới là Lễ tốt nghiệp của Sơn, bạn cho mình xin tên để xác nhận tham gia 'Game' này nha.",
+      text: "Sắp tới là Lễ tốt nghiệp của Sơn đó, bạn cho mình xin tên để xác nhận tham gia 'Game' này nha.",
     },
   ]);
 
