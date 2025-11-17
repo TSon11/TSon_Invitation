@@ -170,7 +170,7 @@ const handleButtonClick = (button: "a" | "b" | "dpad") => {
         },
         {
           sender: "me",
-          text: "Vé với map đây nghen, được thì gủ thêm Gia Lai đi cho dui nghe :3",
+          text: "Vé với map đây nghen, được thì gủ thêm Cô gái Tây Nguyên đi cho dui nghe :3",
         }
       );
     } else if (name === "tín" || name === "minh tín") {
